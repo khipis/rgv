@@ -2,4 +2,3 @@
 
 -Three.js
 -dat.GUI
--bower
