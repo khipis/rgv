@@ -1,4 +1,5 @@
 # Pseudorandom LFSR based generators visualisation
 
-
-#Technologies
+-Three.js
+-dat.GUI
+-bower

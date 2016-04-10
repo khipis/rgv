@@ -1,0 +1,24 @@
+{
+  "name": "rgv",
+  "homepage": "https://github.com/khipis/rgv",
+  "authors": [
+    "Krzysztof Korolczuk <krzysztofkorolczuk2@gmail.com>"
+  ],
+  "description": "Pseudorandom LFSR based generators visualisation",
+  "main": "bower.json",
+  "moduleType": [],
+  "keywords": [
+    "LFSR",
+    "pseudorandom",
+    "visualisation"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

@@ -6,34 +6,55 @@
     <title>Pseudorandom LFSR based generators visualisation</title>
     <link rel="stylesheet" type="text/css" href="css/darkbootstrap.css"/>
 
+    <script type="text/javascript" src="bower_components/dat.gui/dat.gui.js"></script>
+
 </head>
 <body>
-<div id="wrapper">
-<!--    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="index.html">LFSR</a>
-        </div>
-        <div class="collapse navbar-ex1-collapse">
-            <ul id="active" class="nav navbar-nav side-nav">
-                <a href="#/inbound">Report</a></li>
-                <li><a href="blog.html">Comments</a></li>
-            </ul>
-        </div>
-    </nav>-->
-
-    <div id="page-wrapper">
 
 
 
-<!--        <h3>Blog contents
-            <small>2014/03/07 11:43 PM</small>
-        </h3>
-        <p>This is a very interesting blog, well structured and organized. Would be great if you
-            included more information on other IT topics as well.</p>-->
 
 
-    </div>
 
-</div>
+
+
+
+
+<script type="text/javascript">
+
+    var FizzyText = function () {
+
+        this.color0 = "#ffae23"; // CSS string
+        this.color1 = [0, 128, 255]; // RGB array
+        this.color2 = [0, 128, 255, 0.3]; // RGB with alpha
+        this.color3 = {h: 350, s: 0.9, v: 0.3}; // Hue, saturation, value
+        this.message = 'dat.gui';
+        this.speed = 0.8;
+        this.displayOutline = false;
+        this.explode = function () {
+        };
+        // Define render logic ...
+    };
+
+    window.onload = function () {
+        var text = new FizzyText();
+        var gui = new dat.GUI();
+
+        /*        var datGuiContainer = document.getElementById('datGuiContainer');
+         datGuiContainer.appendChild(gui.domElement);*/
+
+        gui.addColor(text, 'color0');
+        gui.addColor(text, 'color1');
+        gui.addColor(text, 'color2');
+        gui.addColor(text, 'color3');
+        gui.add(text, 'message');
+        gui.add(text, 'speed', -5, 5);
+        gui.add(text, 'displayOutline');
+        gui.add(text, 'explode');
+    };
+
+</script>
+
+
 </body>
 </html>
