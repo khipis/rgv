@@ -1,2 +1,4 @@
-# rgv
-Pseudorandom LFSR based generators visualisation
+# Pseudorandom LFSR based generators visualisation
+
+
+#Technologies
