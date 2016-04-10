@@ -1,6 +1,8 @@
 /target/
+/Babylon.js/
 
 # IDE
 .idea/
 .sonar/
 *.iml
+.sonar_lock

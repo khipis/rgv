@@ -73,12 +73,12 @@ if (BABYLON.Engine.isSupported()) {
     var skyboxMaterial = new BABYLON.StandardMaterial("skyBox", scene);
     skyboxMaterial.backFaceCulling = false;
     var files = [
-        "./Space/space_left.jpg",
-        "./Space/space_up.jpg",
-        "./Space/space_front.jpg",
-        "./Space/space_right.jpg",
-        "./Space/space_down.jpg",
-        "./Space/space_back.jpg",
+        "./assets/images/sky.jpg",
+       "./assets/images/sky.jpg",
+       "./assets/images/sky.jpg",
+       "./assets/images/sky.jpg",
+       "./assets/images/sky.jpg",
+       "./assets/images/sky.jpg",
     ];
     skyboxMaterial.reflectionTexture = BABYLON.CubeTexture.CreateFromImages(files, scene);
     skyboxMaterial.reflectionTexture.coordinatesMode = BABYLON.Texture.SKYBOX_MODE;
