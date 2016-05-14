@@ -27,8 +27,6 @@ if (BABYLON.Engine.isSupported()) {
 
     var earthSetup = function () {
         options = {
-            biomes: "earth",
-            clouds: true,
             mapSize: 1024,
             upperColor: new BABYLON.Color3(2.0, 1.0, 0),
             lowerColor: new BABYLON.Color3(0, 0.2, 1.0),
@@ -39,10 +37,8 @@ if (BABYLON.Engine.isSupported()) {
             lowerClamp: new BABYLON.Vector2(0.6, 1),
             groundAlbedo: 1.2,
             cloudAlbedo: 1.0,
-            rings: false,
-            ringsColor: new BABYLON.Color3(0.6, 0.6, 0.6),
             directNoise: false,
-            lowerClip: new BABYLON.Vector2(0, 0),
+            lowerClip: new BABYLON.Vector2(100, 0),
             range: new BABYLON.Vector2(0.3, 0.35)
         };
     }
@@ -95,8 +91,8 @@ if (BABYLON.Engine.isSupported()) {
     var cloudTexture;
 
     // Planet
-    var planet = BABYLON.Mesh.CreateSphere("planet", 14, 30, scene);
-    var planetImpostor = BABYLON.Mesh.CreateSphere("planetImpostor", 16, 28, scene);
+    var planet = BABYLON.Mesh.CreateSphere("planet", 0, 0, scene);
+    var planetImpostor = BABYLON.Mesh.CreateSphere("planetImpostor", 160, 28, scene);
     planetImpostor.isBlocker = true;
     planetImpostor.material = new BABYLON.StandardMaterial("impostor", scene);
 
@@ -135,11 +131,6 @@ if (BABYLON.Engine.isSupported()) {
                                       options.cloudAlbedo));
     });
 
-    var engageRings = function () {
-        rings.setEnabled(options.rings);
-        ringsMaterial.diffuseColor = options.ringsColor;
-        scene.shadowsEnabled = options.rings;
-    }
 
     // Biome generator
     var generateBiome = function () {
@@ -184,8 +175,6 @@ if (BABYLON.Engine.isSupported()) {
         shaderMaterial.setTexture("cloudSampler", cloudTexture);
 
         shaderMaterial.setColor3("haloColor", options.haloColor);
-
-        engageRings();
     }
 
 }
