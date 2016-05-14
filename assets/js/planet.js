@@ -95,7 +95,7 @@ if (BABYLON.Engine.isSupported()) {
     var cloudTexture;
 
     // Planet
-    var planet = BABYLON.Mesh.CreateSphere("planet", 64, 30, scene);
+    var planet = BABYLON.Mesh.CreateSphere("planet", 14, 30, scene);
     var planetImpostor = BABYLON.Mesh.CreateSphere("planetImpostor", 16, 28, scene);
     planetImpostor.isBlocker = true;
     planetImpostor.material = new BABYLON.StandardMaterial("impostor", scene);
@@ -114,16 +114,6 @@ if (BABYLON.Engine.isSupported()) {
     shaderMaterial.setVector3("lightPosition", sun.position);
 
     planet.material = shaderMaterial;
-
-    // Rings
-    var rings = BABYLON.Mesh.CreateGround("rings", 10, 10, 1, scene);
-    rings.parent = planet;
-    var ringsMaterial = new BABYLON.StandardMaterial("ringsMaterial", scene);
-    ringsMaterial.diffuseTexture = new BABYLON.Texture("rings.png", scene);
-    ringsMaterial.diffuseTexture.hasAlpha = true;
-    ringsMaterial.backFaceCulling = false;
-    rings.material = ringsMaterial;
-    rings.receiveShadows = true;
 
     // Shadow generator
     var shadowGenerator = new BABYLON.ShadowGenerator(2048, sun);
