@@ -134,4 +134,3 @@ gui.add(options, 'cloudSeed', 0.1, 1.0).onFinishChange(function () {
 });
 
 generateBiome();
-}
