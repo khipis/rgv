@@ -21,21 +21,20 @@ function addSkybox() {
 }
 
 function addSphere(x, y, z) {
-    var sphere = BABYLON.Mesh.CreateSphere('sphere', 16, 5, scene);
+    var sphere = BABYLON.Mesh.CreateSphere('sphere', 10, 3, scene);
     sphere.position.x = x;
     sphere.position.y = y;
     sphere.position.z = z;
-};
+}
 
-function random(from, to) {
+var from = -100;
+var to = 100;
+
+function random() {
     return Math.floor(Math.random() * (to*2)) + from;
 }
 
-if (BABYLON.Engine.isSupported()) {
-    var canvas = document.getElementById("renderCanvas");
-
-    var engine = new BABYLON.Engine(canvas, true);
-    var scene = new BABYLON.Scene(engine);
+function setupCamera() {
     var camera = new BABYLON.ArcRotateCamera("Camera", 0, 0, 10, new BABYLON.Vector3(0, 0, 0),
         scene);
 
@@ -44,6 +43,15 @@ if (BABYLON.Engine.isSupported()) {
 
     camera.lowerRadiusLimit = 50;
     camera.upperRadiusLimit = 500;
+    return camera;
+}
+if (BABYLON.Engine.isSupported()) {
+    var canvas = document.getElementById("renderCanvas");
+
+    var engine = new BABYLON.Engine(canvas, true);
+    var scene = new BABYLON.Scene(engine);
+
+    var camera = setupCamera();
 
     var sun = new BABYLON.PointLight("sun", new BABYLON.Vector3(50, 50, 30), scene);
 
@@ -57,39 +65,33 @@ if (BABYLON.Engine.isSupported()) {
         scene.render();
     });
 
-    var options;
-
-    var earthSetup = function () {
-        options = {
-            biomes: "earth",
-            clouds: true,
-            mapSize: 1024,
-            upperColor: new BABYLON.Color3(2.0, 1.0, 0),
-            lowerColor: new BABYLON.Color3(0, 0.2, 1.0),
-            haloColor: new BABYLON.Color3(0, 0.2, 1.0),
-            maxResolution: 128,
-            seed: 0.30,
-            cloudSeed: 0.55,
-            lowerClamp: new BABYLON.Vector2(0.6, 1),
-            groundAlbedo: 1.2,
-            cloudAlbedo: 1.0,
-            directNoise: false,
-            lowerClip: new BABYLON.Vector2(100, 0),
-            range: new BABYLON.Vector2(0.3, 0.35)
-        };
+    var options ={
+        upperColor :new BABYLON.Color3(0.9, 0.45, 0.45),
+        lowerColor : new BABYLON.Color3(1.0, 0, 0),
+        haloColor : new BABYLON.Color3(1.0, 0, 0.3),
+        seed : 0.30,
+        cloudSeed : 0.60,
+        clouds : false,
+        lowerClamp : new BABYLON.Vector2(0, 1),
+        maxResolution : 256,
+        cloudAlbedo : 0,
+        groundAlbedo : 1.0,
+        directNoise : false,
+        lowerClip : new BABYLON.Vector2(0, 0),
+        range : new BABYLON.Vector2(0.3, 0.4)
     };
 
-    earthSetup();
+    
 
-    addSkybox();
+   // addSkybox();
 
     // Lens flares
     BABYLON.Engine.ShadersRepository = "/src/shaders/";
 
-    for (var i = 0; i < 1000; i++) {
-        var x = random(-200, 200);
-        var y = random(-200, 200);
-        var z = random(-200, 200);
+    for (var i = 0; i < 10000; i++) {
+        var x = random();
+        var y = random();
+        var z = random();
         addSphere(x, y, z);
     }
 
@@ -105,16 +107,5 @@ if (BABYLON.Engine.isSupported()) {
         });
     shaderMaterial.setVector3("cameraPosition", camera.position);
     shaderMaterial.setVector3("lightPosition", sun.position);
-
-
-
-
-
-    // Biome generator
-    var generateBiome = function () {
-
-        shaderMaterial.setTexture("textureSampler", noiseTexture);
-        shaderMaterial.setColor3("haloColor", options.haloColor);
-    }
 
 }
