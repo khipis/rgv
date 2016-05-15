@@ -44,7 +44,7 @@ if (BABYLON.Engine.isSupported()) {
             lowerClip: new BABYLON.Vector2(100, 0),
             range: new BABYLON.Vector2(0.3, 0.35)
         };
-    }
+    };
 
     earthSetup();
 
@@ -54,18 +54,6 @@ if (BABYLON.Engine.isSupported()) {
     var random2 = new BABYLON.DynamicTexture("random", 512, scene, false,
         BABYLON.Texture.NEAREST_SAMPLINGMODE);
 
-    var updateRandom = function (random) {
-        var context = random.getContext();
-
-        var data = context.getImageData(0, 0, 512, 512);
-
-        for (var i = 0; i < 512 * 512 * 4; i++) {
-            data.data[i] = (Math.random() * 256) | 0;
-        }
-
-        context.putImageData(data, 0, 0);
-        random.update();
-    }
 
     // Space
     var skybox = BABYLON.Mesh.CreateBox("skyBox", 1000.0, scene);
@@ -77,7 +65,7 @@ if (BABYLON.Engine.isSupported()) {
         "./assets/images/sky.jpg",
         "./assets/images/sky.jpg",
         "./assets/images/sky.jpg",
-        "./assets/images/sky.jpg",
+        "./assets/images/sky.jpg"
     ];
 
     skyboxMaterial.reflectionTexture = BABYLON.CubeTexture.CreateFromImages(files, scene);
@@ -92,14 +80,13 @@ if (BABYLON.Engine.isSupported()) {
 
 
     // Planet
-    var planet = BABYLON.Mesh.CreateSphere("planet", 14, 30, scene);
-    planet.setPosition(new BABYLON.Vector3(111, 111, 10));
-
+    var planet = new BABYLON.Mesh.CreateSphere("planet", 14, 30, scene);
+    planet.setPosition(new BABYLON.Vector3(111, 0, 10));
 
     // Material
     var shaderMaterial = new BABYLON.ShaderMaterial("shader", scene, {
             vertex: "./planet",
-            fragment: "./planet",
+            fragment: "./planet"
         },
         {
             attributes: ["position", "normal", "uv"],
@@ -129,9 +116,6 @@ if (BABYLON.Engine.isSupported()) {
 
     // Biome generator
     var generateBiome = function () {
-        updateRandom(random);
-        updateRandom(random2);
-
         shaderMaterial.setTexture("textureSampler", noiseTexture);
         shaderMaterial.setColor3("haloColor", options.haloColor);
     }
