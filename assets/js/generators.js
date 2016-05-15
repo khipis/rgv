@@ -14,8 +14,7 @@ function lfsr_1() {
         return reg1[0];
     }
     var n = 18, temp = reg1[6] ^ reg1[17];   //1+x7+x18
-    var k = 0;
-    for (k = n - 1; k > 0; k--) {
+    for (var k = n - 1; k > 0; k--) {
         reg1[k] = reg1[k - 1];
     }
     reg1[0] = temp;
@@ -28,8 +27,7 @@ function lfsr_2() {
         return reg2[0];
     }
     var n = 19, temp = reg2[0] ^ reg2[1] ^ reg2[4] ^ reg2[18]; //1+x+x2+x5+x19
-    var k = 0;
-    for (k = n - 1; k > 0; k--) {
+    for (var k = n - 1; k > 0; k--) {
         reg2[k] = reg2[k - 1];
     }
     reg2[0] = temp;
@@ -42,8 +40,7 @@ function lfsr_3() {
         return reg3[0];
     }
     var n = 20, temp = reg3[2] ^ reg3[19];   //1+x3+x20
-    var k = 0;
-    for (k = n - 1; k > 0; k--) {
+    for (var k = n - 1; k > 0; k--) {
         reg3[k] = reg3[k - 1];
     }
     reg3[0] = temp;
@@ -66,7 +63,7 @@ function geffe() {
 
 function stop_and_go() {
     var lf2, lf3;
-    if (lfsr_1() == 1) {
+    if (lfsr_1() === 1) {
         lf2 = lfsr_2();
         lf3 = reg3[0];
     }
@@ -81,7 +78,7 @@ function shrinker() {
     var lf1 = lfsr_1();
     var lf2 = lfsr_2();
 
-    while (lf1 != 1) {
+    while (lf1 !== 1) {
         lf1 = lfsr_1();
         lf2 = lfsr_2();
     }

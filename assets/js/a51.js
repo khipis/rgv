@@ -37,7 +37,7 @@ function main(){
 
     var i = 0;
     for (i = 0; i < 10; i++) {
- /**/       putchar(a51() + 48);
+ /*     putchar(a51() + 48);*/
     }
 }
 
@@ -79,8 +79,7 @@ function lfsr_2() {
 
 function lfsr_3() {
     var temp = reg3[22] ^ reg3[21] ^ reg3[20] ^ reg3[7];   //1+x8+x21+x22+x23
-    var k = 0;
-    for (k = REG_3_COUNT - 1; k > 0; k--) {
+    for (var k = REG_3_COUNT - 1; k > 0; k--) {
         reg3[k] = reg3[k - 1];
     }
     reg3[0] = temp;
@@ -96,13 +95,13 @@ function a51() {
     var lf2 = reg2[21]; //Old bit value
     var lf3 = reg3[22]; //Old bit value
 
-    if (clock1 == clock2 || clock1 == clock3) {
+    if (clock1 === clock2 || clock1 === clock3) {
         lfsr_1();
     }
-    if (clock2 == clock1 || clock2 == clock3) {
+    if (clock2 === clock1 || clock2 === clock3) {
         lfsr_2();
     }
-    if (clock3 == clock2 || clock3 == clock1) {
+    if (clock3 === clock2 || clock3 === clock1) {
         lfsr_3();
     }
 
