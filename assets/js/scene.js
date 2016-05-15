@@ -20,31 +20,7 @@ function addSkybox() {
     skybox.material = skyboxMaterial;
 }
 
-function addSphere(x, y, z) {
-    var sphere = BABYLON.Mesh.CreateSphere('sphere', 10, 3, scene);
-    sphere.position.x = x;
-    sphere.position.y = y;
-    sphere.position.z = z;
-}
 
-var from = -100;
-var to = 100;
-
-function random() {
-    return Math.floor(Math.random() * (to*2)) + from;
-}
-
-function setupCamera() {
-    var camera = new BABYLON.ArcRotateCamera("Camera", 0, 0, 10, new BABYLON.Vector3(0, 0, 0),
-        scene);
-
-    camera.setPosition(new BABYLON.Vector3(0, 5, 10));
-    camera.attachControl(canvas, false);
-
-    camera.lowerRadiusLimit = 50;
-    camera.upperRadiusLimit = 500;
-    return camera;
-}
 if (BABYLON.Engine.isSupported()) {
     var canvas = document.getElementById("renderCanvas");
 
@@ -83,17 +59,13 @@ if (BABYLON.Engine.isSupported()) {
 
     
 
-   // addSkybox();
+    addSkybox();
 
     // Lens flares
     BABYLON.Engine.ShadersRepository = "/src/shaders/";
 
-    for (var i = 0; i < 10000; i++) {
-        var x = random();
-        var y = random();
-        var z = random();
-        addSphere(x, y, z);
-    }
+    
+    addSpheres(300);
 
     // Material
     var shaderMaterial = new BABYLON.ShaderMaterial("shader", scene, {
