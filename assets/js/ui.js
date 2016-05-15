@@ -25,7 +25,6 @@ gui.add(options, 'biomes', ['earth', "volcanic", "jungle", "icy", "desert", "isl
             options.maxResolution = 256;
             options.cloudAlbedo = 0;
             options.groundAlbedo = 1.0;
-            options.rings = false;
             options.directNoise = false;
             options.lowerClip = new BABYLON.Vector2(0, 0);
             options.range = new BABYLON.Vector2(0.3, 0.4);
@@ -41,7 +40,6 @@ gui.add(options, 'biomes', ['earth', "volcanic", "jungle", "icy", "desert", "isl
             options.maxResolution = 512;
             options.cloudAlbedo = 1.0;
             options.groundAlbedo = 1.1;
-            options.rings = false;
             options.directNoise = false;
             options.lowerClip = new BABYLON.Vector2(0, 0);
             options.range = new BABYLON.Vector2(0.2, 0.4);
@@ -57,7 +55,6 @@ gui.add(options, 'biomes', ['earth', "volcanic", "jungle", "icy", "desert", "isl
             options.maxResolution = 256;
             options.cloudAlbedo = 1.0;
             options.groundAlbedo = 1.1;
-            options.rings = true;
             options.ringsColor = new BABYLON.Color3(0.6, 0.6, 0.6);
             options.directNoise = false;
             options.lowerClip = new BABYLON.Vector2(0, 0);
@@ -74,7 +71,6 @@ gui.add(options, 'biomes', ['earth', "volcanic", "jungle", "icy", "desert", "isl
             options.maxResolution = 512;
             options.cloudAlbedo = 1.0;
             options.groundAlbedo = 1.0;
-            options.rings = false;
             options.directNoise = false;
             options.lowerClip = new BABYLON.Vector2(0, 0);
             options.range = new BABYLON.Vector2(0.3, 0.4);
@@ -90,7 +86,6 @@ gui.add(options, 'biomes', ['earth', "volcanic", "jungle", "icy", "desert", "isl
             options.maxResolution = 512;
             options.cloudAlbedo = 1.0;
             options.groundAlbedo = 1.2;
-            options.rings = false;
             options.directNoise = false;
             options.lowerClip = new BABYLON.Vector2(0, 0);
             options.range = new BABYLON.Vector2(0.2, 0.3);
@@ -101,7 +96,6 @@ gui.add(options, 'biomes', ['earth', "volcanic", "jungle", "icy", "desert", "isl
             options.clouds = false;
             options.maxResolution = 256;
             options.groundAlbedo = 0.7;
-            options.rings = false;
             options.directNoise = true;
             options.lowerClip = new BABYLON.Vector2(0.5, 0.9);
             break;
@@ -118,11 +112,6 @@ gui.add(options, 'maxResolution', [128, 256, 512]).onChange(function () {
 
 gui.add(options, 'clouds').onChange(function (value) {
     options.clouds = value
-});
-
-gui.add(options, 'rings').onChange(function (value) {
-    options.rings = value;
-    engageRings();
 });
 
 gui.add(options, 'seed', 0.1, 1.0).onFinishChange(function () {
