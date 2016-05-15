@@ -5,6 +5,7 @@ if (BABYLON.Engine.isSupported()) {
     var scene = new BABYLON.Scene(engine);
     var camera = new BABYLON.ArcRotateCamera("Camera", 0, 0, 10, new BABYLON.Vector3(0, 0, 0),
         scene);
+
     camera.setPosition(new BABYLON.Vector3(0, 5, 10));
     camera.attachControl(canvas, false);
 
@@ -67,7 +68,7 @@ if (BABYLON.Engine.isSupported()) {
     }
 
     // Space
-    var skybox = BABYLON.Mesh.CreateBox("skyBox", 10000.0, scene);
+    var skybox = BABYLON.Mesh.CreateBox("skyBox", 1000.0, scene);
     var skyboxMaterial = new BABYLON.StandardMaterial("skyBox", scene);
     skyboxMaterial.backFaceCulling = false;
     var files = [
@@ -78,6 +79,7 @@ if (BABYLON.Engine.isSupported()) {
         "./assets/images/sky.jpg",
         "./assets/images/sky.jpg",
     ];
+
     skyboxMaterial.reflectionTexture = BABYLON.CubeTexture.CreateFromImages(files, scene);
     skyboxMaterial.reflectionTexture.coordinatesMode = BABYLON.Texture.SKYBOX_MODE;
     skyboxMaterial.diffuseColor = new BABYLON.Color3(0, 0, 0);
@@ -88,15 +90,11 @@ if (BABYLON.Engine.isSupported()) {
     // Lens flares
     BABYLON.Engine.ShadersRepository = "/src/shaders/";
 
-    // Noise
-    var noiseTexture;
-    var cloudTexture;
 
     // Planet
     var planet = BABYLON.Mesh.CreateSphere("planet", 14, 30, scene);
-    var planetImpostor = BABYLON.Mesh.CreateSphere("planetImpostor", 16, 28, scene);
-    planetImpostor.isBlocker = true;
-    planetImpostor.material = new BABYLON.StandardMaterial("impostor", scene);
+    planet.setPosition(new BABYLON.Vector3(111, 111, 10));
+
 
     // Material
     var shaderMaterial = new BABYLON.ShaderMaterial("shader", scene, {
@@ -113,11 +111,6 @@ if (BABYLON.Engine.isSupported()) {
 
     planet.material = shaderMaterial;
 
-    // Shadow generator
-    var shadowGenerator = new BABYLON.ShadowGenerator(2048, sun);
-    shadowGenerator.getShadowMap().renderList.push(planetImpostor);
-    shadowGenerator.setDarkness(0.3);
-    shadowGenerator.usePoissonSampling = true;
 
     // Rotation
     var angle = 0;
@@ -136,46 +129,10 @@ if (BABYLON.Engine.isSupported()) {
 
     // Biome generator
     var generateBiome = function () {
-        if (noiseTexture) {
-            noiseTexture.dispose();
-            cloudTexture.dispose();
-        }
-
         updateRandom(random);
         updateRandom(random2);
 
-        // Noise
-        noiseTexture =
-            new BABYLON.ProceduralTexture("noise", options.mapSize, "./noise", scene, null, true,
-                true);
-        noiseTexture.setColor3("upperColor", options.upperColor);
-        noiseTexture.setColor3("lowerColor", options.lowerColor);
-        noiseTexture.setFloat("mapSize", options.mapSize);
-        noiseTexture.setFloat("maxResolution", options.maxResolution);
-        noiseTexture.setFloat("seed", options.seed);
-        noiseTexture.setVector2("lowerClamp", options.lowerClamp);
-        noiseTexture.setTexture("randomSampler", random);
-        noiseTexture.setVector2("range", options.range);
-        noiseTexture.setVector3("options", new BABYLON.Vector3(options.directNoise ? 1.0 : 0,
-            options.lowerClip.x,
-            options.lowerClip.y));
-        noiseTexture.refreshRate = 0;
-
         shaderMaterial.setTexture("textureSampler", noiseTexture);
-
-        // Cloud
-        cloudTexture =
-            new BABYLON.ProceduralTexture("cloud", options.mapSize, "./noise", scene, null, true,
-                true);
-        cloudTexture.setTexture("randomSampler", random2);
-        cloudTexture.setFloat("mapSize", options.mapSize);
-        cloudTexture.setFloat("maxResolution", 256);
-        cloudTexture.setFloat("seed", options.cloudSeed);
-        cloudTexture.setVector3("options", new BABYLON.Vector3(1.0, 0, 1.0));
-        cloudTexture.refreshRate = 0;
-
-        shaderMaterial.setTexture("cloudSampler", cloudTexture);
-
         shaderMaterial.setColor3("haloColor", options.haloColor);
     }
 
