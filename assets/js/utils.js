@@ -24,6 +24,14 @@ function addSphere(x, y, z) {
     sphere.position.x = x;
     sphere.position.y = y;
     sphere.position.z = z;
+
+    var sphereMaterial = new BABYLON.StandardMaterial("sphereMaterial", scene);
+    
+    sphereMaterial.specularColor = new BABYLON.Color3(0.9, 0, 0);
+    sphereMaterial.diffuseColor = new BABYLON.Color3(0.9, 0, 0);
+
+    sphere.material = sphereMaterial;
+
 }
 
 function addSpheres(count) {

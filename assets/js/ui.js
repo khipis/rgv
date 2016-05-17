@@ -1,6 +1,6 @@
 var gui = new dat.GUI();
 
-gui.add(options, 'maxResolution', [128, 256, 512]).onChange(function () {
+gui.add(options, 'generator', ['Shrinker', 'Geffe', 'Stop and go', 'A5/1']).onChange(function () {
 
 });
 
