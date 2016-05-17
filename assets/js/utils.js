@@ -19,19 +19,26 @@ function addSkybox() {
     skybox.material = skyboxMaterial;
 }
 
+function sphereMaterial() {
+    var sphereMaterial = new BABYLON.StandardMaterial('sphereMaterial', scene);
+    sphereMaterial.alpha = 1;
+    sphereMaterial.backFaceCulling = true;
+    sphereMaterial.specularPower = 50;
+    sphereMaterial.useSpecularOverAlpha = true;
+    sphereMaterial.useAlphaFromDiffuseTexture = false;
+    sphereMaterial.diffuseColor = new BABYLON.Color3(1.00, 1.00, 1.00);
+    sphereMaterial.emissiveColor = new BABYLON.Color3(0.00, 0.00, 1.0);
+    sphereMaterial.ambientColor = new BABYLON.Color3(0.00, 0.00, 0.00);
+    sphereMaterial.specularColor = new BABYLON.Color3(1.00, 1.00, 1.00);
+    return sphereMaterial;
+}
+
 function addSphere(x, y, z) {
-    var sphere = BABYLON.Mesh.CreateSphere('sphere', 10, 3, scene);
+    var sphere = BABYLON.Mesh.CreateSphere('sphere', 10, 5, scene);
     sphere.position.x = x;
     sphere.position.y = y;
     sphere.position.z = z;
-
-    var sphereMaterial = new BABYLON.StandardMaterial("sphereMaterial", scene);
-    
-    sphereMaterial.specularColor = new BABYLON.Color3(0.9, 0, 0);
-    sphereMaterial.diffuseColor = new BABYLON.Color3(0.9, 0, 0);
-
-    sphere.material = sphereMaterial;
-
+    sphere.material = sphereMaterial();
 }
 
 function addSpheres(count) {
