@@ -12,6 +12,10 @@ gui.add(options, 'intensity', 0.0, 5.0).onFinishChange(function (value) {
     sun.intensity = value;
 });
 
+gui.add(options, 'sphereSize', 0, 100).onFinishChange(function (value) {
+    options.sphereSize = value;
+});
+
 gui.add(options, 'spheres', 1, 10000).onFinishChange(function (value) {
     options.spheres = value;
 });

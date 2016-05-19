@@ -36,20 +36,20 @@ function sphereMaterial() {
     return sphereMaterial;
 }
 
-function addSphere(x, y, z) {
-    var sphere = BABYLON.Mesh.CreateSphere('sphere', 10, 5, scene);
+function addSphere(x, y, z, size) {
+    var sphere = BABYLON.Mesh.CreateSphere('sphere', 10, size, scene);
     sphere.position.x = x;
     sphere.position.y = y;
     sphere.position.z = z;
     sphere.material = sphereMaterial();
 }
 
-function addSpheres(count) {
+function addSpheres(count, size) {
     for (var i = 0; i < count; i++) {
         var x = random();
         var y = random();
         var z = random();
-        addSphere(x, y, z);
+        addSphere(x, y, z, size);
     }
 }
 
