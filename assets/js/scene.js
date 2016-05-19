@@ -33,7 +33,7 @@ if (BABYLON.Engine.isSupported()) {
         scene.render();
     });
 
-    addSkybox();
+    addSkybox(options.skybox);
     addSpheres(options.spheres);
 
 }

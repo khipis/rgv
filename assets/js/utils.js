@@ -1,23 +1,25 @@
-function addSkybox() {
-    var skybox = BABYLON.Mesh.CreateBox("skyBox", 1000.0, scene);
-    var skyboxMaterial = new BABYLON.StandardMaterial("skyBox", scene);
-    skyboxMaterial.backFaceCulling = false;
-    var files = [
-        "./assets/images/sky.jpg",
-        "./assets/images/sky.jpg",
-        "./assets/images/sky.jpg",
-        "./assets/images/sky.jpg",
-        "./assets/images/sky.jpg",
-        "./assets/images/sky.jpg"
-    ];
+function addSkybox(addSkybox) {
+    if (addSkybox) {
+        var skybox = BABYLON.Mesh.CreateBox("skyBox", 1000.0, scene);
+        var skyboxMaterial = new BABYLON.StandardMaterial("skyBox", scene);
+        skyboxMaterial.backFaceCulling = false;
+        var files = [
+            "./assets/images/sky.jpg",
+            "./assets/images/sky.jpg",
+            "./assets/images/sky.jpg",
+            "./assets/images/sky.jpg",
+            "./assets/images/sky.jpg",
+            "./assets/images/sky.jpg"
+        ];
 
-    skyboxMaterial.reflectionTexture = BABYLON.CubeTexture.CreateFromImages(files, scene);
-    skyboxMaterial.reflectionTexture.coordinatesMode = BABYLON.Texture.SKYBOX_MODE;
-    skyboxMaterial.diffuseColor = new BABYLON.Color3(0, 0, 0);
-    skyboxMaterial.specularColor = new BABYLON.Color3(0, 0, 0);
-    skyboxMaterial.disableLighting = true;
-    skybox.material = skyboxMaterial;
-    return skybox;
+        skyboxMaterial.reflectionTexture = BABYLON.CubeTexture.CreateFromImages(files, scene);
+        skyboxMaterial.reflectionTexture.coordinatesMode = BABYLON.Texture.SKYBOX_MODE;
+        skyboxMaterial.diffuseColor = new BABYLON.Color3(0, 0, 0);
+        skyboxMaterial.specularColor = new BABYLON.Color3(0, 0, 0);
+        skyboxMaterial.disableLighting = true;
+        skybox.material = skyboxMaterial;
+        return skybox;
+    }
 }
 
 function sphereMaterial() {
@@ -59,7 +61,7 @@ function setupCamera() {
     var camera = new BABYLON.ArcRotateCamera("Camera", 0, 0, 10, new BABYLON.Vector3(0, 0, 0),
         scene);
 
-    camera.setPosition(new BABYLON.Vector3(0, 5, 10+0));
+    camera.setPosition(new BABYLON.Vector3(0, 5, 500));
     camera.attachControl(canvas, false);
 
     camera.lowerRadiusLimit = 50;

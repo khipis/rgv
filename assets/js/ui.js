@@ -24,4 +24,4 @@ gui.add(options, 'toRange', 0, 300).onFinishChange(function (value) {
     options.fromRange = value;
 });
 
-gui.add(loptions,'rerender').add();
+gui.add(options,'rerender').add();
