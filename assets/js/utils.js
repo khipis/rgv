@@ -17,6 +17,7 @@ function addSkybox() {
     skyboxMaterial.specularColor = new BABYLON.Color3(0, 0, 0);
     skyboxMaterial.disableLighting = true;
     skybox.material = skyboxMaterial;
+    return skybox;
 }
 
 function sphereMaterial() {
@@ -50,11 +51,8 @@ function addSpheres(count) {
     }
 }
 
-var from = -100;
-var to = 100;
-
 function random() {
-    return Math.floor(Math.random() * (to * 2)) + from;
+    return Math.floor(Math.random() * (options.fromRange * 2)) + options.toRange;
 }
 
 function setupCamera() {
