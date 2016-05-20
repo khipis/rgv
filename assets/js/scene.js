@@ -3,10 +3,14 @@ if (BABYLON.Engine.isSupported()) {
     var options = {
         intensity: 0.30,
         skybox: true,
-        spheres: 100,
+        spheres: 500,
         sphereSize: 5,
-        fromRange: -100,
-        toRange: 100,
+        x_min_range: -200,
+        x_max_range: 200,
+        y_min_range: -200,
+        y_max_range: 200,
+        z_min_range: -200,
+        z_max_range: 200,
         generator: 'Shrinker',
         rerender: function () {
             scene = new BABYLON.Scene(engine);

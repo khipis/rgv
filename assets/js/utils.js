@@ -37,7 +37,7 @@ function sphereMaterial() {
 }
 
 function addSphere(x, y, z, size) {
-    var sphere = BABYLON.Mesh.CreateSphere('sphere', 10, size, scene);
+    var sphere = BABYLON.Mesh.CreateSphere('sphere', 10, 5, scene);
     sphere.position.x = x;
     sphere.position.y = y;
     sphere.position.z = z;
@@ -46,15 +46,15 @@ function addSphere(x, y, z, size) {
 
 function addSpheres(count, size) {
     for (var i = 0; i < count; i++) {
-        var x = random();
-        var y = random();
-        var z = random();
+        var x = random(options.x_min_range, options.x_max_range);
+        var y = random(options.y_min_range, options.y_max_range);
+        var z = random(options.z_min_range, options.z_max_range);
         addSphere(x, y, z, size);
     }
 }
 
-function random() {
-    return Math.floor(Math.random() * (options.fromRange * 2)) + options.toRange;
+function random(from, to) {
+    return Math.floor(Math.random() * (from * 2)) + to;
 }
 
 function setupCamera() {
