@@ -26,7 +26,7 @@ function sphereMaterial() {
     var sphereMaterial = new BABYLON.StandardMaterial('sphereMaterial', scene);
     sphereMaterial.alpha = 1;
     sphereMaterial.backFaceCulling = true;
-    sphereMaterial.specularPower = 50;
+    sphereMaterial.specularPower = options.specularPower;
     sphereMaterial.useSpecularOverAlpha = true;
     sphereMaterial.useAlphaFromDiffuseTexture = false;
     sphereMaterial.diffuseColor = new BABYLON.Color3(0.00, 0.3, 1.00);
