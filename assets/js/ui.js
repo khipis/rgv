@@ -1,6 +1,8 @@
 var gui = new dat.GUI();
 
 gui.add(options, 'generator', ['Shrinker', 'Geffe', 'Stop and go', 'A5/1']).onChange(function () {
+    resetA51registers();
+    resetRegisters();
     options.generator = value;
 });
 
