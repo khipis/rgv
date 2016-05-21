@@ -81,6 +81,4 @@ function shrinker() {
     return lf2;
 }
 
-//     putchar(geffe() + 48);
-
 

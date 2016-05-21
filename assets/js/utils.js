@@ -44,15 +44,24 @@ function addSphere(x, y, z) {
 
 function addSpheres() {
     for (var i = 0; i < options.spheres; i++) {
-        var x = random(options.x_min_range, options.x_max_range);
-        var y = random(options.y_min_range, options.y_max_range);
-        var z = random(options.z_min_range, options.z_max_range);
+        var x = generator();
+        var y = generator();
+        var z = generator();
         addSphere(x, y, z);
     }
 }
 
-function random(from, to) {
-    return Math.floor(Math.random() * (from * 2)) + to;
+function generator() {
+    var byte = getByte();
+    return binaryToInteger(byte);
+}
+
+function getByte() {
+    var byte = '';
+    for (var i = 0; i < 8; i++) {
+        byte = byte + shrinker();
+    }
+    return byte;
 }
 
 function setupCamera() {
@@ -61,8 +70,11 @@ function setupCamera() {
 
     camera.setPosition(new BABYLON.Vector3(0, 5, 500));
     camera.attachControl(canvas, false);
-
     camera.lowerRadiusLimit = 50;
     camera.upperRadiusLimit = 500;
     return camera;
+}
+
+function binaryToInteger(binary) {
+    return parseInt(binary, 2);
 }
