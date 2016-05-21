@@ -35,7 +35,7 @@ function sphereMaterial() {
 }
 
 function addSphere(x, y, z) {
-    var sphere = BABYLON.Mesh.CreateSphere('sphere', 10, options.sphereSize, scene);
+    var sphere = BABYLON.Mesh.CreateSphere('sphere', 3, options.sphereSize, scene);
     sphere.position.x = x;
     sphere.position.y = y;
     sphere.position.z = z;
@@ -61,11 +61,52 @@ function generator() {
 }
 
 function getByte() {
+
+    var chosenGenerator = getGenerator();
+
     var byte = '';
     for (var i = 0; i < 8; i++) {
-        byte = byte + shrinker();
+        byte = byte + chosenGenerator();
     }
     return byte;
+}
+
+function getGenerator() {
+    if (options.generator === 'LFSR 1') {
+        return function () {
+            return lfsr_1();
+        }
+    }
+    else if (options.generator === 'LFSR 2') {
+        return function () {
+            return lfsr_2();
+        }
+    }
+    else if (options.generator === 'LFSR 3') {
+        return function () {
+            return lfsr_3();
+        }
+    }
+    else if (options.generator === 'Shrinker') {
+        return function () {
+            return shrinker();
+        }
+    }
+    else if (options.generator === 'Geffe') {
+        return function () {
+            return geffe();
+        }
+    }
+    else if (options.generator === 'Stop and go') {
+        return function () {
+            return stop_and_go();
+        }
+    }
+    else if (options.generator === 'A5/1') {
+        return function () {
+            return a51();
+        }
+    }
 }
 
 function setupCamera() {
