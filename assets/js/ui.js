@@ -1,8 +1,8 @@
 var gui = new dat.GUI();
 
 gui.add(options, 'generator',
-        ['LFSR 1', 'LFSR 2', 'LFSR 3', 'Shrinker', 'Geffe', 'Stop and go', 'A5/1']).onChange(
-    function () {
+        ['LFSR 1', 'LFSR 2', 'LFSR 3', 'Shrinker', 'Geffe', 'Stop and go', 'A51']).onChange(
+    function (value) {
         resetA51registers();
         resetRegisters();
         a51_init();

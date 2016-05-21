@@ -1,5 +1,3 @@
-window.onload = a51_init();
-
 var REG_1_COUNT = 19;
 var REG_2_COUNT = 22;
 var REG_3_COUNT = 23;

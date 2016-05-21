@@ -1,5 +1,4 @@
 if (BABYLON.Engine.isSupported()) {
-
     var options = {
         intensity: 0.30,
         skybox: true,

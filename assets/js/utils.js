@@ -35,7 +35,7 @@ function sphereMaterial() {
 }
 
 function addSphere(x, y, z) {
-    var sphere = BABYLON.Mesh.CreateSphere('sphere', 3, options.sphereSize, scene);
+    var sphere = BABYLON.Mesh.CreateSphere('sphere', 6, options.sphereSize, scene);
     sphere.position.x = x;
     sphere.position.y = y;
     sphere.position.z = z;
@@ -61,9 +61,7 @@ function generator() {
 }
 
 function getByte() {
-
     var chosenGenerator = getGenerator();
-
     var byte = '';
     for (var i = 0; i < 8; i++) {
         byte = byte + chosenGenerator();
@@ -102,7 +100,7 @@ function getGenerator() {
             return stop_and_go();
         }
     }
-    else if (options.generator === 'A5/1') {
+    else if (options.generator === 'A51') {
         return function () {
             return a51();
         }
