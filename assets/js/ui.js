@@ -22,4 +22,6 @@ gui.add(options, 'spheres', 1, 10000).onFinishChange(function (value) {
     options.spheres = value;
 });
 
-gui.add(options,'rerender');
+gui.add(options, 'resetRegisters');
+
+gui.add(options, 'rerender');

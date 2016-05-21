@@ -7,6 +7,10 @@ if (BABYLON.Engine.isSupported()) {
         spheres: 500,
         sphereSize: 6,
         generator: 'Shrinker',
+        resetRegisters: function () {
+            resetA51registers();
+            resetRegisters();
+        },
         rerender: function () {
             scene = new BABYLON.Scene(engine);
             scene.clearColor = new BABYLON.Color3(0, 0, 0);

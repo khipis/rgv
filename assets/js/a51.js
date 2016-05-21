@@ -28,7 +28,6 @@ var key = [
     0, 0, 0, 0
 ];
 
-
 function a51_init() {
     for (var i = 0; i < KEY_COUNT; i++) {
         a51_reg1[0] = key[i] ^ a51_reg1[0];
@@ -96,7 +95,7 @@ function a51() {
     return lf1 ^ lf2 ^ lf3;
 }
 
-function resetA51registers(){
+function resetA51registers() {
     a51_reg1 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
     a51_reg2 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
     a51_reg3 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
