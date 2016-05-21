@@ -56,7 +56,8 @@ function addSpheres() {
 
 function generator() {
     var byte = getByte();
-    return binaryToInteger(byte);
+    var integer = binaryToInteger(byte);
+    return integer - 127;
 }
 
 function getByte() {

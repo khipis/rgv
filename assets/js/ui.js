@@ -19,7 +19,7 @@ gui.add(options, 'intensity', 0.0, 2.0).onFinishChange(function (value) {
     sun.intensity = value;
 });
 
-gui.add(options, 'sphereSize', 1, 30).onFinishChange(function (value) {
+gui.add(options, 'sphereSize', 1, 100).onFinishChange(function (value) {
     options.sphereSize = Math.round(value);
 });
 

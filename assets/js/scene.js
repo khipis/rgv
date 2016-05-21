@@ -28,7 +28,7 @@ if (BABYLON.Engine.isSupported()) {
     scene.clearColor = new BABYLON.Color3(0, 0, 0);
     var camera = setupCamera();
 
-    var sun = new BABYLON.PointLight("sun", new BABYLON.Vector3(50, 50, 30), scene);
+    var sun = new BABYLON.PointLight("sun", new BABYLON.Vector3(150, 50, 30), scene);
     sun.intensity = options.intensity;
 
     window.addEventListener("resize", function () {
