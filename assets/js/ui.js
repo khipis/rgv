@@ -20,28 +20,4 @@ gui.add(options, 'spheres', 1, 10000).onFinishChange(function (value) {
     options.spheres = value;
 });
 
-gui.add(options, 'x_min_range', -127, 128).onFinishChange(function (value) {
-    options.x_min_range = value;
-});
-
-gui.add(options, 'x_max_range', -127, 128).onFinishChange(function (value) {
-    options.x_max_range = value;
-});
-
-gui.add(options, 'y_min_range', -127, 128).onFinishChange(function (value) {
-    options.y_min_range = value;
-});
-
-gui.add(options, 'y_max_range', -127, 128).onFinishChange(function (value) {
-    options.y_max_range = value;
-});
-
-gui.add(options, 'z_min_range', -127, 128).onFinishChange(function (value) {
-    options.z_min_range = value;
-});
-
-gui.add(options, 'z_max_range', -127, 128).onFinishChange(function (value) {
-    options.z_max_range = value;
-});
-
 gui.add(options,'rerender');
