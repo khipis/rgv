@@ -29,27 +29,25 @@ function sphereMaterial() {
     sphereMaterial.specularPower = 50;
     sphereMaterial.useSpecularOverAlpha = true;
     sphereMaterial.useAlphaFromDiffuseTexture = false;
-    sphereMaterial.diffuseColor = new BABYLON.Color3(1.00, 1.00, 1.00);
-    sphereMaterial.emissiveColor = new BABYLON.Color3(0.00, 0.00, 1.0);
-    sphereMaterial.ambientColor = new BABYLON.Color3(0.00, 0.00, 0.00);
-    sphereMaterial.specularColor = new BABYLON.Color3(1.00, 1.00, 1.00);
+    sphereMaterial.diffuseColor = new BABYLON.Color3(0.00, 0.3, 1.00);
+    sphereMaterial.emissiveColor = new BABYLON.Color3(0.00, 0.00, 0.5);
     return sphereMaterial;
 }
 
-function addSphere(x, y, z, size) {
-    var sphere = BABYLON.Mesh.CreateSphere('sphere', 10, 5, scene);
+function addSphere(x, y, z) {
+    var sphere = BABYLON.Mesh.CreateSphere('sphere', 10, options.sphereSize, scene);
     sphere.position.x = x;
     sphere.position.y = y;
     sphere.position.z = z;
     sphere.material = sphereMaterial();
 }
 
-function addSpheres(count, size) {
-    for (var i = 0; i < count; i++) {
+function addSpheres() {
+    for (var i = 0; i < options.spheres; i++) {
         var x = random(options.x_min_range, options.x_max_range);
         var y = random(options.y_min_range, options.y_max_range);
         var z = random(options.z_min_range, options.z_max_range);
-        addSphere(x, y, z, size);
+        addSphere(x, y, z);
     }
 }
 
