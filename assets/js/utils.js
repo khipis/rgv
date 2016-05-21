@@ -46,7 +46,10 @@ function addSpheres() {
     for (var i = 0; i < options.spheres; i++) {
         var x = generator();
         var y = generator();
-        var z = generator();
+        var z = 0;
+        if (options._3d) {
+            z = generator();
+        }
         addSphere(x, y, z);
     }
 }
