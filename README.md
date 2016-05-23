@@ -1,5 +1,7 @@
 # Pseudorandom LFSR based generators visualisation
 
--Html
--Babylon.js
--dat.GUI
+    -Babylon.js
+    -dat.GUI
+    
+    
+Try working demo on: http://www.krzysztofkorolczuk.com/rgv
