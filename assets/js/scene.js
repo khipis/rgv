@@ -6,7 +6,7 @@ if (BABYLON.Engine.isSupported()) {
         spheres: 500,
         sphereSize: 6,
         specularPower: 30,
-        generator: 'Shrinker',
+        generator: 'A51',
         resetRegisters: function () {
             resetA51registers();
             resetRegisters();
